@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sql-join',{
+        category: '探索式大数据分析',
+        color: '#8192d6',
+        defaults: {
+            name: {value:""},
+	    condition: {value:"", required:true},
+        useExpression: {value:"false", required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"join";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="sql-join">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+        <label for="node-input-condition"><i class="icon-tag"></i> Condition</label><br>
+        <input type="text" id="node-input-condition" placeholder="col1, col2 or table1.col = table2.col when use expression"><br>
+        <label for="node-input-useExpression"><i class="icon-tag"></i> Use Expression to Join</label><br>
+        <input type="text" id="node-input-useExpression" placeholder="false">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="sql-join">
+    A join node for data frame, you should specify join condition
+</script>

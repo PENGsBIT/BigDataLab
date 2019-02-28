@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sample',{
+        category: '探索式大数据分析',
+        color: '#83fcd8',
+        defaults: {
+            name: {value:""},
+            withReplacement: {value: false, required: true},
+            fraction: {value:0.01, required: true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"sample";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="sample">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+         <label for="node-input-withReplacement"><i class="icon-tag"></i> withReplacement</label><br>
+        <input type="checkbox" id="node-input-withReplacement" placeholder="withReplacement" ><br>
+        <label for="node-input-fraction"><i class="icon-tag"></i> fraction</label><br>
+        <input type="number" id="node-input-fraction" placeholder="fraction" step="0.001">
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="sample">
+    Sampling
+</script>

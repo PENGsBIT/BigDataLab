@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+ <title>Login DataHubble</title>
+ <link href="begin/loginindex.css" rel="stylesheet"></head>
+<script src="jquery.min.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="begin/login.js"></script>
+<script src="begin/signup.js"></script>
+
+<!--<script LANGUAGE="javascript">-->
+<!--function tolist() {-->
+<!--window.location.href=("./list.html", "height='+ (1080-50) +', width='+ (1920 - 10) +', toolbar=no,menubar=no, scrollbars=no, resizable=yes, location=no, status=no")-->
+<!--}-->
+<!--</script>-->
+
+
+<body>
+<!--面板-->
+<div id="panel">
+ <!--面板的头部-->
+ <div class="panel-top">
+ <h2>DataHubble</h2>
+</div>    <!--面板的主要内容-->
+ <div class="panel-content">
+<div class="int">
+ <label><img src="begin/pic/login/user.png" ></label>
+<input type="text" placeholder="Username" id="usrname">
+ </div>
+<div class="int">
+<label><img src="begin/pic/login/password.png" ></label>
+<input type="password" placeholder="Password" id="password">
+</div>
+<!--配置信息-->
+
+<div class="login">
+<button onclick ="login()">Login </button>
+</div>
+  <div class="login">
+   <button onclick ="signup()">signup </button>
+  </div>
+</div>
+</body>
+</html>
+

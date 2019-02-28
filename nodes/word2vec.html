@@ -1,0 +1,34 @@
+<script type="text/javascript">
+//    RED.nodes.registerType('word2vec',{
+//        category: 'Text',
+//        color: '#83fcd8',
+//        defaults: {
+//            name: {value:""},
+//            wordCol: {value:""},
+//            numVecSize: {value:""},
+//
+//        },
+//        inputs:1,
+//        outputs:1,
+//        icon: "file.png",
+//        label: function() {
+//            return this.name||"word2vec";
+//        }
+//    });
+</script>
+
+<script type="text/x-red" data-template-name="word2vec">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+        <label for="node-input-wordCol"><i class="icon-tag"></i> wordCol</label><br>
+        <input type="text" id="node-input-wordCol" placeholder="wordCol"><br>
+        <label for="node-input-numVecSize"><i class="icon-tag"></i> numVecSize</label><br>
+        <input type="text" id="node-input-numVecSize" placeholder="numVecSize"><br>
+      
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="word2vec">
+    A word2vec node.
+</script>

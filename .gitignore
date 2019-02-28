@@ -1,0 +1,31 @@
+.DS_store
+.config.json
+.dist
+.jshintignore
+.npm
+.project
+.sessions.json
+.settings
+.tern-project
+*.backup
+*_cred*
+coverage
+credentials.json
+flows*.json
+nodes/node-red-nodes/
+node_modules
+locales/zz-ZZ
+nodes/core/locales/zz-ZZ
+.vscode/
+*.log
+.node-persist/*
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+red/api/config.js

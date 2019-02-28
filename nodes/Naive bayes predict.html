@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('naivebayes-predict',{
+        category: 'Classify',
+        color: '#83fcd8',
+        defaults: {
+            name: {value:""},
+
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"naivebayes-predict";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="naivebayes-predict">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="naivebayes-predict">
+    A Naive bayes prediction node.
+</script>

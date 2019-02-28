@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sum',{
+        category: 'Aggregation',
+        color: '#8192d6',
+        defaults: {
+            name: {value:""},
+            column: {value:"", required:true},
+            needGroupBy: {value: false},
+            groupByCol: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"Sum";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="sum">
+    <div class="form-row">
+         <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+        <label for="node-input-column"><i class="icon-tag"></i> column</label><br>
+        <input type="text" id="node-input-column" placeholder="column"><br>
+        <label for="node-input-needGroupBy" style="width:160px;"><i class="icon-tag"></i> needGroupBy</label>
+        <input type="checkbox" id="node-input-needGroupBy" checked=false ><br>
+        <label for="node-input-groupByCol" style="width:160px;"><i class="icon-tag"></i> GroupBy&nbsp;column</label><br>
+        <input type="text" id="node-input-groupByCol" placeholder="GroupBy column"><br>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Sum">
+    A aggregation node for data frame, you should specify sum condition
+</script>

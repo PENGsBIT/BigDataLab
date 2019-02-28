@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('union',{
+        category: 'Aggregation',
+        color: '#8192d6',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"union";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="union">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="aggregation-union">
+    A Not NULL aggregation node for data frame, you should specify union condition
+</script>

@@ -1,0 +1,3 @@
+RED.log = (function() {
+    return {}
+})();

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DH</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="bootstrap3-editable/css/bootstrap-editable.css">
+    <script src="jquery.min.js"></script><script src="jquery.cookie.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="uuid.js"></script>
+
+    <!--<script src="refresh_table.js"></script>-->
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20140204/json2.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body >
+<!-- Fixed navbar -->
+<nav class="navbar  navbar-fixed-top" role="navigation" >
+    <div class="container">
+        <div class="navbar-header" >
+            <a class="navbar-brand" href="#" >
+                <img alt="Brand" style="max-width:inherit" src="begin/pic/logo.png">
+            </a>
+            <!--<a class="navbar-brand" href="job_list.html">DataHubble</a>-->
+        </div>
+
+    </div>
+</nav>
+
+<script>
+    function cj() {
+    var jid=uuid(10,5);
+//    var base_url = "http://localhost:1880";
+  var base_url = "/";
+    var link=base_url+"?jid="+jid;
+    window.open(link);
+    $.post("/jid",
+//               $.post("http://10.141.212.118:1880/jid",
+        {
+            "jid":jid,
+        },
+
+        function(status){
+            console.log(status);
+        })
+        console.log("post jid="+jid);
+    };
+</script>
+
+
+<div class="container" style="background: white">
+    <h1 style="margin-top: 80px">Data List</h1>
+    <div id="toolbar" style="margin-top: 10px">
+        <button id="creatjb" class="btn btn-success"  onclick="cj()">
+            <i class="glyphicon glyphicon-share-alt"></i> CreatJob
+        </button>
+        <button id="remove" class="btn btn-danger" disabled>
+            <i class="glyphicon glyphicon-remove"></i> Delete
+        </button>
+
+    </div>
+
+    <table id="table"
+           data-toolbar="#toolbar"
+           data-search="true"
+           data-show-refresh="true"
+           data-show-toggle="true"
+           data-show-columns="true"
+           data-show-export="true"
+           data-detail-view="true"
+           data-detail-formatter="detailFormatter"
+           data-minimum-count-columns="2"
+           data-show-pagination-switch="false"
+           data-pagination="true"
+           data-id-field="id"
+           data-page-list="[10, 25, 50, 100, ALL]"
+           data-show-footer="false"
+           data-side-pagination="client"
+           data-response-handler="responseHandler"
+           data-method="post">
+
+    </table>
+    <!--data-url="http://10.144.212.118:1880/joblist-->
+    <div class="modal fade" id="process">
+        <div style="width: 300px;height:20px; z-index: 20000; position: absolute; text-align: center; left:50%; top: 35%;margin-left:-100px;margin-top:-10px">
+            <div class="progress progress-striped active" style="margin-bottom: 0;">
+                <div class="progress-bar" style="width: 100%;"></div>
+            </div>
+            <h1>100%</h1>
+        </div>
+    </div>
+</div>
+<!--form id-->
+<script>
+    var jid= uuid(8,9);
+    $("#table").attr("data-unique-id",jid);
+</script>
+
+<script>
+    var $table = $('#table'),
+        $remove = $('#remove'),
+        $creatjob = $('#creatjb'),
+        selections = [];
+//    $.ajax(
+//        {
+//            type:"GET",
+//            url:"http://localhost:8080/maritime/rest/getAllSuperviseInformjson",
+//            contentType: 'application/json',
+//            dataType:"json",
+//            success:function(json){
+//                var data = json.msg;//要传入table的数据值
+//                //bootstrap-Table获取数据
+//
+//                 $("#table").bootstrapTable('load',data);
+//            },
+//            error:function(){
+//                alert("错误");
+//            }
+//        }
+//    )
+    function initTable() {
+        $table.bootstrapTable({
+            url: '/joblist',
+            queryParams : function(params) {
+                $.cookie();
+                return params;
+            },
+//            responseHandler: function(res) {
+//                return {
+//                    "total": res.DATA.totalRecordCount,//总页数
+//                    "rows": res.DATA.itemsList   //数据
+//                };
+//            },
+            height: getHeight(),
+            columns: [
+                [
+                    {
+                        field: 'state',
+                        checkbox: true,
+                        rowspan: 2,
+                        align: 'center',
+                        valign: 'middle'
+                    }, {
+                        title: 'job ID',
+                        field: 'jid',
+                        rowspan: 2,
+                        align: 'center',
+                        valign: 'middle',
+                        sortable: true,
+                        footerFormatter: totalTextFormatter
+                    }, {
+                        title: 'job Detail',
+                        colspan: 5,
+                        align: 'center'
+                    }
+                ],
+                [
+                    {
+                        field: 'ownername',
+                        title: 'owner',
+                        sortable: true,
+                        editable: false,
+                        footerFormatter: totalOwnerFormatter,
+                        align: 'center'
+//                    }, {
+//                        field: 'price',
+//                        title: 'user P',
+//                        sortable: true,
+//                        align: 'center'
+//                        editable: {
+//                            type: 'text',
+//                            title: 'user email',
+//                            validate: function (value) {
+//                                value = $.trim(value);
+//                                if (!value) {
+//                                    return 'This field is required';
+//                                }
+//                                if (!/^\$/.test(value)) {
+//                                    return 'This field needs to start width $.'
+//                                }
+//                                var data = $table.bootstrapTable('getData'),
+//                                    index = $(this).parents('tr').data('index');
+//                                console.log(data[index]);
+//                                return '';
+//                            }
+//                        },
+//                        footerFormatter: totalPriceFormatter
+                    },{
+                    field: 'createtime',
+                    title: 'Creat Time',
+                    sortable: true,
+                    align: 'center',
+                    },{
+                    field: 'frequency',
+                    title: 'Frequency',
+                    sortable: true,
+                    editable: false,
+                    align: 'center'
+                    }, {
+                        field: 'operate',
+                        title: 'Operate',
+                        align: 'center',
+                        events: operateEvents,
+                        formatter: operateFormatter
+                    }
+                ]
+            ]
+        });
+        $(window).resize(function () {
+            $('#tableId').bootstrapTable('resetView');
+        });
+        // sometimes footer render error.
+        setTimeout(function () {
+            $table.bootstrapTable('resetView');
+        }, 200);
+        $table.on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', function () {
+            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
+
+            // save your data, here just save the current page
+            selections = getIdSelections();
+            // push or splice the selections if you want to save all data selections
+        });
+//        $table.on('expand-row.bs.table', function (e, index, row, $detail) {
+//            if (index % 2 == 1) {
+//                $detail.html('Loading from ajax request...');
+//                $.get('LICENSE', function (res) {
+//                    $detail.html(res.replace(/\n/g, '<br>'));
+//                });
+//            }
+//        });
+        $table.on('all.bs.table', function (e, owner, args) {
+            console.log(owner, args);
+        });
+        $remove.click(function () {
+            var ids = getIdSelections();
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: ids
+            });
+            $remove.prop('disabled', true);
+        });
+        $(window).resize(function () {
+            $table.bootstrapTable('resetView', {
+                height: getHeight()
+            });
+        });
+    }
+
+    function getIdSelections() {
+        return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.id
+        });
+    }
+
+    function responseHandler(res) {
+        $.each(res, function (i, row) {
+            row.state = $.inArray(row.id, selections) !== -1;
+        });
+        return res;
+    }
+
+    function detailFormatter(index, row) {
+        var html = [];
+        $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+        });
+        return html.join('');
+    }
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="view" href="javascript:void(0)" title="View">',
+            '<i class="glyphicon glyphicon-search"></i>',
+            '</a>  ',
+//            '<a class="process" href="javascript:void(0)" title="Process">',
+//            '<i class="glyphicon glyphicon-signal"></i>',
+//            '</a>  ',
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+
+    window.operateEvents = {
+        'click .view': function (e, value, row, index) {
+            var jid = row.jid;
+            console.log(jid);
+            var link="/"+"?jid="+jid;
+            window.open(link);
+        },
+//        'click .process': function (e, value, row, index) {
+//           alert('You click like action, row: ' + JSON.stringify(row));
+//            $("#process").modal('show');
+//        },
+        'click .remove': function (e, value, row, index) {
+            $table.bootstrapTable('remove', {
+                field: 'jid',
+                values: [row.jid]
+            });
+        }
+    };
+
+    function totalTextFormatter(data) {
+        return 'Total';
+    }
+
+    function totalOwnerFormatter(data) {
+        return data.length;
+    }
+
+//    function totalPriceFormatter(data) {
+//        var total = 0;
+//        $.each(data, function (i, row) {
+//            total += +(row.price.substring(1));
+//        });
+//        return '$' + total;
+//    }
+
+    function getHeight() {
+        return $(window).height() - $('h1').outerHeight(true);
+    }
+
+
+    $(function () {
+        var scripts = [
+                location.search.substring(1) || 'bootstrap-table/src/bootstrap-table.js',
+                'bootstrap-table/src/extensions/export/bootstrap-table-export.js',
+                'tableExport.jquery.plugin/tableExport.js',
+                'bootstrap-table/src/extensions/editable/bootstrap-table-editable.js',
+                'bootstrap3-editable/js/bootstrap-editable.js'
+            ],
+            eachSeries = function (arr, iterator, callback) {
+                callback = callback || function () {};
+                if (!arr.length) {
+                    return callback();
+                }
+                var completed = 0;
+                var iterate = function () {
+                    iterator(arr[completed], function (err) {
+                        if (err) {
+                            callback(err);
+                            callback = function () {};
+                        }
+                        else {
+                            completed += 1;
+                            if (completed >= arr.length) {
+                                callback(null);
+                            }
+                            else {
+                                iterate();
+                            }
+                        }
+                    });
+                };
+                iterate();
+            };
+
+        eachSeries(scripts, getScript, initTable);
+    });
+
+    function getScript(url, callback) {
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.src = url;
+
+        var done = false;
+        // Attach handlers for all browsers
+        script.onload = script.onreadystatechange = function() {
+            if (!done && (!this.readyState ||
+                    this.readyState == 'loaded' || this.readyState == 'complete')) {
+                done = true;
+                if (callback)
+                    callback();
+
+                // Handle memory leak in IE
+                script.onload = script.onreadystatechange = null;
+            }
+        };
+
+
+
+        head.appendChild(script);
+
+        // We handle everything using the script element injection
+        return undefined;
+    }
+</script>
+</body>
+</html>

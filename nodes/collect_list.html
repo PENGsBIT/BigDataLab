@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('collect_list',{
+        category: 'statistical',
+        color: '#83fcd8',
+        defaults: {
+            name: {value:""},
+            type: {value:"collect_list"},
+	    column: {value:"", required:true},
+
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"collect_list";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="collect_list">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+    	<label for="node-input-column"><i class="icon-tag"></i> column </label><br>
+	    <input type="text" id="node-input-column" placeholder=""><br>
+
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="collect_list">
+    An collect_list node.
+</script>

@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('naivebayes-model',{
+        category: 'Classify',
+        color: '#83fcd8',
+        defaults: {
+            name: {value:""},
+	    label: {value:"", required:true},
+
+	    smoothing: {value:""},
+        modelType: {value:"multinomial"},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"naivebayes-model";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="naivebayes-model">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+    	<label for="node-input-label"><i class="icon-tag"></i> label </label><br>
+	    <input type="text" id="node-input-label" placeholder=""><br>
+
+	    <label for="node-input-smoothing"><i class="icon-tag"></i> smoothing</label><br>
+	    <input type="text" id="node-input-smoothing" placeholder="0-1.0"><br>
+        <label for="node-input-modelType"><i class="icon-tag"></i>  modelType </label><br>
+        <input type="text" id="node-input-modelType" placeholder="multinomial(default)/bernoulli">
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="naivebayes-model">
+    A Naive bayes model node.
+</script>

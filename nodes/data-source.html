@@ -1,0 +1,69 @@
+﻿<script type="text/javascript">
+    RED.nodes.registerType('data-source', {
+        category: '探索式大数据分析',
+        color: '#81c2d6',
+        defaults: {
+            name: { value: "", required: true },
+            alias: { value: "", required: true }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "file.png",
+        label: function () {
+            return this.name || "data-source";
+        }
+    });
+
+</script>
+
+<script type="text/x-red" data-template-name="data-source">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <select id="node-input-name" >
+            
+        </select> 
+        </br>
+        <label for="node-input-alias"><i class="icon-tag"></i> Alias </label>
+        <input type="text" id="node-input-alias" placeholder="alias">
+        <button type="button" onclick="dd()">Data Detail</button>
+        <pre id="detail"></pre>
+    </div>
+    <script type="text/javascript">
+        
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        $.get("/jid/"+ getUrlParam("jid")+"/tables", function (data) {
+            var options = "";
+            data.tables.forEach(function (element) {
+                options += "<option value='" + element + "'> " + element + "</option>";
+            }, this);
+            $("#node-input-name").html(options);
+        });
+    </script>
+    <script type="text/javascript">
+
+        function dd(){
+            var node= document.getElementById("node-input-name");
+            var tablename = node.options[node.selectedIndex].text;
+            console.log(tablename);
+            $.ajax({
+                url:"/table_columns/"+getUrlParam("jid")+"/"+tablename,
+                type:"GET",
+                success:function(httpdata){
+                    $("#detail").html(httpdata);
+                }
+            });
+        }
+</script>
+
+
+
+</script>
+
+
+<script type="text/x-red" data-help-name="data-source">
+</script>

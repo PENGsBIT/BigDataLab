@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    RED.nodes.registerType('onehot',{
+        category: 'Text',
+        color: '#83fcd8',
+        defaults: {
+            name: {value:""},
+	    features: {value:"", required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"onehot";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="onehot">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+        <label for="node-input-features"><i class="icon-tag"></i> Features</label><br>
+        <input type="text" id="node-input-features" placeholder="feature1, feature2">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="onehot">
+    A One-hot encoding node. 
+</script>

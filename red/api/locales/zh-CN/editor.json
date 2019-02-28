@@ -1,0 +1,321 @@
+{
+    "common": {
+        "label": {
+            "name": "名字",
+            "ok": "好",
+            "done":"完成",
+            "cancel": "取消",
+            "delete": "删除",
+            "close": "关闭",
+            "load": "加载",
+            "save": "保存",
+            "import": "导入",
+            "export": "导出"
+        }
+    },
+    "workspace": {
+        "defaultName": "流程 __number__",
+        "editFlow": "编辑流程: __name__",
+        "confirmDelete": "确认删除",
+        "delete": "确定删除 '__label__'?",
+        "dropFlowHere": "把流程放在此处"
+    },
+    "menu": {
+        "label": {
+            "view": {
+                "view": "查看",
+                "showGrid": "显示网格",
+                "snapGrid": "对齐到网格",
+                "textDir": "文字方向",
+                "defaultDir": "默认",
+                "ltr": "从左到右",
+                "rtl": "从右到左",
+                "auto": "上下文的"
+            },
+            "sidebar": {
+                "show": "显示侧边栏"
+            },
+            "displayStatus": "显示节点状态",
+            "displayConfig": "配置节点",
+            "import": "导入",
+            "export": "导出",
+            "search": "搜索流程",
+            "clipboard": "剪切板",
+            "library": "库",
+            "examples": "例子",
+            "subflows": "子流程",
+            "createSubflow": "创建子流程",
+            "selectionToSubflow": "选择到子流程",
+            "flows": "流程",
+            "add": "添加",
+            "rename": "重命名",
+            "delete": "删除",
+            "keyboardShortcuts": "快捷键",
+            "login": "登入",
+            "logout": "登出",
+            "editPalette":"管理面板"
+        }
+    },
+    "user": {
+        "loggedInAs": "作为 __name__ 登入",
+        "login": "登入",
+        "loginFailed": "登录失败",
+        "notAuthorized": "没有授权"
+    },
+    "notification": {
+        "warning": "<strong>警告</strong>: __message__",
+        "warnings": {
+            "undeployedChanges": "节点有尚未部署的更改",
+            "nodeActionDisabled": "子流程内的节点动作被禁止"
+        },
+
+        "error": "<strong>错误</strong>: __message__",
+        "errors": {
+            "lostConnection": "失去服务器连接, 正在重试...",
+            "lostConnectionReconnect": "失去服务器连接, __time__s 后重试.",
+            "lostConnectionTry": "立即尝试",
+            "cannotAddSubflowToItself": "无法对自身添加子流程。",
+            "cannotAddCircularReference": "无法添加子流程 - 检测到循环索引"
+        }
+    },
+    "clipboard": {
+        "nodes": "节点",
+        "selectNodes": "选取上述文本并复制到剪切板。",
+        "pasteNodes": "在此处粘贴节点",
+        "importNodes": "导入节点",
+        "exportNodes": "导出节点到剪切板",
+        "importUnrecognised": "导入的未识别的类型:",
+        "importUnrecognised_plural": "导入的未识别的类型:",
+        "nodesExported": "节点导出到剪切板",
+        "nodeCopied": "__count__ 个节点被复制",
+        "nodeCopied_plural": "__count__ 个节点被复制",
+        "invalidFlow": "无效的流程: __message__",
+        "export": {
+            "selected":"选择的节点",
+            "current":"当前流程",
+            "all":"所有流程",
+            "compact":"紧凑的",
+            "formatted":"格式化的",
+            "copy": "导出到剪切板"
+        },
+        "import": {
+            "import": "导入到",
+            "newFlow": "新流程"
+        }
+    },
+    "deploy": {
+        "deploy": "部署",
+        "full": "全部",
+        "fullDesc": "部署整个工作空间",
+        "modifiedFlows": "修改的流程",
+        "modifiedFlowsDesc": "只部署包含修改节点的流程",
+        "modifiedNodes": "修改的节点",
+        "modifiedNodesDesc": "只部署改变的节点",
+        "successfulDeploy": "部署成功",
+        "deployFailed": "部署失败: __message__",
+        "unusedConfigNodes":"你有一些未使用的配置节点.",
+        "unusedConfigNodesLink":"点击此处查看",
+        "errors": {
+            "noResponse": "服务器无响应"
+        },
+        "confirm": {
+            "button": {
+                "confirm": "确认部署",
+                "review": "查看差异",
+                "cancel": "取消",
+                "merge": "合并修改"
+            },
+            "undeployedChanges": "你有未部署的修改.\n\n离开此页将会丢失这些修改.",
+            "improperlyConfigured": "工作空间包含该未正确配置的节点:",
+            "unknown": "工作空间包含未知节点类型:",
+            "confirm": "确定部署?",
+            "conflict": "服务器正在运行更近的一组流程。"
+        }
+    },
+    "subflow": {
+        "editSubflow": "编辑流程模板: __name__",
+        "edit": "编辑流程模板",
+        "subflowInstances": "有此子流程模板的 __count__ 个实例",
+        "subflowInstances_plural": "有此子流程模板的 __count__ 个实例",
+        "editSubflowProperties": "编辑属性",
+        "input": "输入:",
+        "output": "输出:",
+        "deleteSubflow": "删除子流程",
+        "info": "描述",
+        "format":"markdown 格式",
+        "errors": {
+            "noNodesSelected": "<strong>无法创建子流程</strong>: 未选择节点。",
+            "multipleInputsToSelection": "<strong>无法创建子流程</strong>: 选择了多个输入"
+        }
+    },
+    "editor": {
+        "configEdit": "编辑",
+        "configAdd": "增加",
+        "configUpdate": "更新",
+        "configDelete": "删除",
+        "nodesUse": "__count__ 个节点使用这个配置",
+        "nodesUse_plural": "__count__ 个节点使用这个配置",
+        "addNewConfig": "新增 __type__ 类型的配置节点",
+        "editNode": "编辑 __type__ 节点",
+        "editConfig": "编辑 __type__ 配置节点",
+        "addNewType": "新增 __type__...",
+        "errors": {
+            "scopeChange": "更改作用域会使其在其他流程中无法使用"
+        }
+    },
+    "keyboard": {
+        "selectAll": "选择全部节点",
+        "selectAllConnected": "选择全部连接的节点",
+        "addRemoveNode": "从选择中新增/删除节点",
+        "deleteSelected": "删除选定的节点或链接",
+        "importNode": "导入节点",
+        "exportNode": "导出节点",
+        "nudgeNode": "小幅移动选定的节点",
+        "moveNode": "大幅移动选定的节点",
+        "toggleSidebar": "切换侧边栏",
+        "deleteNode": "删除选定的节点或链接",
+        "copyNode": "复制选定的节点",
+        "cutNode": "剪切选定的节点",
+        "pasteNode": "粘贴节点",
+        "undoChange": "撤销上次修改",
+        "searchBox": "打开搜索框",
+        "managePalette": "管理面板"
+    },
+    "library": {
+        "openLibrary": "打开库...",
+        "saveToLibrary": "保存到库...",
+        "typeLibrary": "__type__ 库",
+        "unnamedType": "未命名的 __type__",
+        "saveToLibrary": "保存到库",
+        "exportToLibrary": "把节点导出到库",
+        "dialogSaveOverwrite": "一个名为 __libraryName__ 的 __libraryType__ 库已经存在. 是否覆盖?",
+        "invalidFilename": "无效的文件名",
+        "savedNodes": "保存的节点",
+        "savedType": "保存的 __type__",
+        "saveFailed": "保存失败: __message__",
+
+        "filename": "文件名",
+        "folder": "文件夹",
+        "filenamePlaceholder": "file",
+        "fullFilenamePlaceholder": "a/b/file",
+        "folderPlaceholder": "a/b",
+
+        "breadcrumb": "库"
+    },
+    "palette": {
+        "noInfo": "没有可用信息",
+        "filter": "过滤节点",
+        "search": "搜索模块",
+        "label": {
+            "subflows": "子流程",
+            "input": "输入",
+            "output": "输出",
+            "function": "功能",
+            "social": "社交",
+            "storage": "存储",
+            "analysis": "分析",
+            "advanced": "高级"
+        },
+        "event": {
+            "nodeAdded": "添加节点到面板:",
+            "nodeAdded_plural": "添加节点到面板",
+            "nodeRemoved": "从面板删除节点:",
+            "nodeRemoved_plural": "从面板删除节点:",
+            "nodeEnabled": "启用节点:",
+            "nodeEnabled_plural": "启用节点:",
+            "nodeDisabled": "禁用节点:",
+            "nodeDisabled_plural": "禁用节点:"
+        },
+        "editor": {
+            "title": "管理面板",
+            "times": {
+                "seconds": "几秒前",
+                "minutes": "几分钟前",
+                "minutesV": "__count__ 分钟前",
+                "hoursV": "__count__ 小时前",
+                "hoursV_plural": "__count__ 小时前",
+                "daysV": "__count__ 天前",
+                "daysV_plural": "__count__ 天前",
+                "weeksV": "__count__ 周前",
+                "weeksV_plural": "__count__ 周前",
+                "monthsV": "__count__ 月前",
+                "monthsV_plural": "__count__ 月前",
+                "yearsV": "__count__ 年前",
+                "yearsV_plural": "__count__ 年前",
+
+                "yearMonthsV": "__y__ 年, __count__ 月前",
+                "yearMonthsV_plural": "__y__ 年, __count__ 月前",
+                "yearsMonthsV": "__y__ 年, __count__ 月前",
+                "yearsMonthsV_plural": "__y__ 年, __count__ 月前"
+            },
+            "nodeCount": "__label__ 节点",
+            "nodeCount_plural": "__label__ 节点",
+            "inuse": "正在使用",
+            "enableall": "全部启用",
+            "disableall": "全部禁用",
+            "enable": "启用",
+            "disable": "禁用",
+            "remove": "移除",
+            "update": "升级到 __version__",
+            "install": "安装",
+            "installed": "已安装",
+            "loading": "加载目录...",
+            "tab-nodes": "节点",
+            "tab-install": "安装",
+            "sort": "排序:",
+            "sortAZ": "a-z",
+            "sortRecent": "最近",
+            "more": "+ 还有 __count__ 个",
+            "errors": {
+                "installFailed": "安装失败: __module__<br>__message__<br>查看日志获取更多信息"
+            }
+
+        }
+    },
+    "sidebar": {
+        "info": {
+            "name": "节点信息",
+            "label": "信息",
+            "node": "节点",
+            "type": "类型",
+            "id": "ID",
+            "subflow": "子流程",
+            "instances": "实例",
+            "properties": "属性",
+            "blank": "空白",
+            "null": "空",
+            "arrayItems": "__count__ 项"
+        },
+        "config": {
+            "name": "配置节点",
+            "label": "配置",
+            "global": "对所有流程",
+            "none": "无",
+            "subflows": "子流程",
+            "flows": "流程",
+            "filterUnused":"未使用",
+            "filterAll":"全部",
+            "filtered": "__count__ 个隐藏"
+        },
+        "palette": {
+            "name": "面板管理",
+            "label": "面板"
+        }
+    },
+    "typedInput": {
+        "type": {
+            "str": "字符串",
+            "num": "数字",
+            "re": "正则表达式",
+            "bool": "布尔值",
+            "json": "JSON",
+            "date": "时间戳"
+        }
+    },
+    "editableList": {
+        "add": "新增"
+    },
+    "search": {
+        "empty": "没有找到匹配项"
+    }
+}

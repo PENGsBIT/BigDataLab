@@ -1,0 +1,3 @@
+RED.result = (function() {
+    return {}
+})();

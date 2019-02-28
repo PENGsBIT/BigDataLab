@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('linear-regression-model',{
+        category: 'Regression',
+        color: '#83fcd8',
+        defaults: {
+            name: {value:""},
+	    labelCol: {value:"label", required:true},
+        numMaxIter: {value:"", required:true},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"linear-regression-model";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="linear-regression-model">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+    	<label for="node-input-labelCol"><i class="icon-tag"></i> labelCol </label><br>
+	    <input type="text" id="node-input-labelCol" placeholder=""><br>
+        <label for="node-input-numMaxIter"><i class="icon-tag"></i> Max Iterations </label><br>
+        <input type="text" id="node-input-numMaxIter" placeholder="">
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="linear-regression-model">
+    A Linear Regression model node.
+</script>

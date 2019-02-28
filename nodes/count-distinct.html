@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('count-distinct',{
+        category: 'Aggregation',
+        color: '#8192d6',
+        defaults: {
+            name: {value:""},
+            type: {value:"count-distinct"},
+	    column: {value:"", required:true},
+
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"count-distinct";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="count-distinct">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+    	<label for="node-input-column"><i class="icon-tag"></i> column </label><br>
+	    <input type="text" id="node-input-column" placeholder=""><br>
+
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="count-distinct">
+    An count-distinct node.
+</script>

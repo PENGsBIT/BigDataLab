@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('decisiontree-predict',{
+        category: 'Classify',
+        color: '#83fcd8',
+        defaults: {
+            name: {value:""},
+
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"decisiontree-predict";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="decisiontree-predict">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label><br>
+        <input type="text" id="node-input-name" placeholder="Name"><br>
+
+     </div>
+</script>
+
+<script type="text/x-red" data-help-name="decisiontree-predict">
+    A decision tree Prediction node.
+</script>
